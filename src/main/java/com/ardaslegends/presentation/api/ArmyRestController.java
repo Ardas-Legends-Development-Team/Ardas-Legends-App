@@ -55,11 +55,6 @@ public class ArmyRestController extends AbstractRestController {
     public HttpEntity<ArmyResponse> createArmy(@RequestBody CreateArmyDto dto) {
         log.debug("Incoming createArmy Request: Data [{}]", dto);
 
-        if(dto.unitString() != null) {
-            log.debug("Found unitString in CreateArmyDto, building units from string");
-            var units = armyService.convertUnitInputIntoUnits(dto.unitString());
-            dto = new CreateArmyDto(dto.executorDiscordId(), dto.name(), dto.armyType(), dto.claimBuildName(), units);
-        }
         log.debug("Calling ArmyService.createArmy");
         Army createdArmy = armyService.createArmy(dto);
         log.debug("Converting to ArmyResponse");

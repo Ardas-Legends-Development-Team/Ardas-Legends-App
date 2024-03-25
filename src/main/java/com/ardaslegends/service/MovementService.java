@@ -1,7 +1,7 @@
 package com.ardaslegends.service;
 
 import com.ardaslegends.domain.*;
-import com.ardaslegends.repository.ArmyRepository;
+import com.ardaslegends.repository.war.army.ArmyRepository;
 import com.ardaslegends.repository.MovementRepository;
 import com.ardaslegends.repository.player.PlayerRepository;
 import com.ardaslegends.repository.region.RegionRepository;

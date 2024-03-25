@@ -2,6 +2,7 @@ package com.ardaslegends.repository;
 
 import com.ardaslegends.domain.*;
 import com.ardaslegends.repository.faction.FactionRepository;
+import com.ardaslegends.repository.war.army.ArmyRepository;
 import io.vavr.collection.List;
 import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
@@ -53,11 +54,11 @@ public class ArmyRepositoryTest {
                 new ArrayList<>(), null, 0.0, false, null, null, 0, 0, claimbuild,
                 OffsetDateTime.now(), true);
 
-        val gondorSoldier = new UnitType("Gondor Soldier", 1.0);
-        val gondorArcher = new UnitType("Gondor Archer", 1.5);
+        val gondorSoldier = new UnitType("Gondor Soldier", 1.0, false);
+        val gondorArcher = new UnitType("Gondor Archer", 1.5, false);
 
-        gondorSoldierUnit = new Unit(null, gondorSoldier, army, 21, 21, false);
-        gondorArcherUnit = new Unit(null, gondorArcher, army, 6, 6, false);
+        gondorSoldierUnit = new Unit(null, gondorSoldier, army, 21, 21);
+        gondorArcherUnit = new Unit(null, gondorArcher, army, 6, 6);
         val units = new ArrayList<Unit>();
         units.add(gondorSoldierUnit);
         units.add(gondorArcherUnit);

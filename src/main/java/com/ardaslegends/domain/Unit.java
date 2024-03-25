@@ -35,11 +35,10 @@ public final class Unit extends AbstractDomainObject {
     private Integer count; //maximum aamount of those units that are in the army
 
     private Integer amountAlive; //current alive soldiers
-    private Boolean isMounted;
 
-    @JsonIgnore
     public Double getCost() {
-        return isMounted ? unitType.getTokenCost() + 1 : unitType.getTokenCost();
+        return unitType.getTokenCost();
     }
 
+    public boolean isMounted() {return unitType.getIsMounted();}
 }

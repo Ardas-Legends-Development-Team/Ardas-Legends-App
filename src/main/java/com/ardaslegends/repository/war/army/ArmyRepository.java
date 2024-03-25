@@ -1,4 +1,4 @@
-package com.ardaslegends.repository;
+package com.ardaslegends.repository.war.army;
 
 import com.ardaslegends.domain.Army;
 import com.ardaslegends.domain.ArmyType;

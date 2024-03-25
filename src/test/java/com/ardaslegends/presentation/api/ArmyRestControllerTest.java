@@ -53,7 +53,7 @@ public class ArmyRestControllerTest {
         log.debug("Testing if ArmyRestController createArmy works properly with correct values");
 
         // Assign
-        CreateArmyDto dto = new CreateArmyDto(null, null, null, null, null, null);
+        CreateArmyDto dto = new CreateArmyDto(null, null, null, null, null);
 
         when(mockArmyService.createArmy(dto)).thenReturn(army);
 

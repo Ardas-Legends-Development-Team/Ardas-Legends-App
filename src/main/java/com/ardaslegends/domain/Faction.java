@@ -69,6 +69,9 @@ public final class Faction extends AbstractDomainObject {
     @CollectionTable(name = "faction_aliases", joinColumns = @JoinColumn(name = "faction_id", foreignKey = @ForeignKey(name = "fk_faction_aliases_faction_id")))
     private Set<String> aliases = new HashSet<>();
 
+    @ManyToMany(mappedBy = "usableBy")
+    private Set<UnitType> availableUnits = new HashSet<>(15);
+
     public Faction(String name, Player leader, List<Army> armies, List<Player> players, Set<Region> regions, List<ClaimBuild> claimBuilds, List<Faction> allies, String colorcode, Region homeRegion, String factionBuffDescr) {
         this.name = name;
         this.leader = leader;

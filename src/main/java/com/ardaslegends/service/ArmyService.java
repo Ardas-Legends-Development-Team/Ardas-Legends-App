@@ -1,7 +1,7 @@
 package com.ardaslegends.service;
 
 import com.ardaslegends.domain.*;
-import com.ardaslegends.repository.ArmyRepository;
+import com.ardaslegends.repository.war.army.ArmyRepository;
 import com.ardaslegends.repository.claimbuild.ClaimbuildRepository;
 import com.ardaslegends.repository.faction.FactionRepository;
 import com.ardaslegends.repository.MovementRepository;
@@ -97,7 +97,7 @@ public class ArmyService extends AbstractService<Army, ArmyRepository> {
         for (UnitTypeDto unitDto: dto.units()) {
             UnitType type = unitTypeService.getUnitTypeByName(unitDto.unitTypeName());
             // Get the UnitType cost and multiply it by the count of that unit, which is stored in the units Map
-            Unit unit = new Unit(null, type, null, unitDto.amount(), unitDto.amount(), unitDto.mounted());
+            Unit unit = new Unit(null, type, null, unitDto.amount(), unitDto.amount());
             units.add(unit);
             tokenCount += unit.getCost() * unit.getCount();
         }
@@ -816,15 +816,9 @@ public class ArmyService extends AbstractService<Army, ArmyRepository> {
             log.trace("Length of split: [{}]", unit.length);
 
             String unitName = unit[0];
-            boolean isMounted = false;
-            if(unitName.toLowerCase().startsWith("mounted")) {
-                log.trace("Unit is mounted");
-                isMounted = true;
-                unitName = unitName.split("ounted")[1].stripLeading();
-            }
             int amount = Integer.parseInt(unit[1]);
 
-            units.add(new UnitTypeDto(unitName, amount, isMounted));
+            units.add(new UnitTypeDto(unitName, amount));
         }
 
         return units.toArray(new UnitTypeDto[0]);
